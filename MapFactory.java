@@ -1,8 +1,15 @@
 import java.util.*;
 
 public class MapFactory {
+    /**
+     * 
+     */
     public MapFactory() {}
 
+    /**
+     * @param type
+     * @return
+     */
     public Map<String, Pokemon> createMap(String type) {
         switch (type.toLowerCase()) {
             case "hashmap":

@@ -4,13 +4,23 @@ import java.io.IOException;
 import java.util.*;
 
 public class Pokedex {
+    /**
+     *
+     */
     private Map<String, Pokemon> pokemonMap;
 
+    /**
+     * @param mapType
+     */
     public Pokedex(String mapType) {
         MapFactory factory = new MapFactory();
         this.pokemonMap = factory.createMap(mapType);
     }
 
+    /**
+     * @param filePath
+     * @throws IOException
+     */
     public void cargarDatos(String filePath) throws IOException {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -39,12 +49,17 @@ public class Pokedex {
 
     /*
     * Método de análisis CSV personalizado.
+    *
     * Este método resuelve el problema de lectura de campos entre comillas que contienen comas,
     * particularmente en el campo de habilidades donde pueden existir múltiples habilidades
     * separadas por comas dentro de comillas.
     * 
     * Implementado con la ayuda de Claude AI.
     */
+    /**
+     * @param line
+     * @return
+     */
     private List<String> parseCSVLine(String line) {
         List<String> result = new ArrayList<>();
         StringBuilder currentField = new StringBuilder();
@@ -64,15 +79,21 @@ public class Pokedex {
             }
         }
     
-    // Add the last field
-    result.add(currentField.toString());
-    return result;
-}
+        result.add(currentField.toString());
+        return result;
+    }
 
+    /**
+     * @param name
+     * @return
+     */
     public Pokemon getPokemon(String name) {
         return pokemonMap.get(name);
     }
 
+    /**
+     * @return
+     */
     public Collection<Pokemon> getAllPokemons() {
         return pokemonMap.values();
     }
