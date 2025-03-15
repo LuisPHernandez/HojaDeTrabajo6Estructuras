@@ -11,6 +11,7 @@ public class MapFactory {
      * @return
      */
     public Map<String, Pokemon> createMap(String type) {
+        // Devuelve la implementación seleccionada de Map
         switch (type.toLowerCase()) {
             case "hashmap":
                 return new HashMap<>();

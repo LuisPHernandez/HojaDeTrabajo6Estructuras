@@ -27,7 +27,8 @@ public class Pokedex {
             br.readLine();
             while ((line = br.readLine()) != null) {
                 List<String> data = parseCSVLine(line);
-            
+                
+                // Se asigna una variable a cada valor separado por coma del CSV
                 String name = data.get(0).trim();
                 int pokedexNum = Integer.parseInt(data.get(1).trim());
                 String type1 = data.get(2).trim();
@@ -88,6 +89,7 @@ public class Pokedex {
      * @return
      */
     public Pokemon getPokemon(String name) {
+        // Devuelve un Pokémon según su nombre
         return pokemonMap.get(name);
     }
 
@@ -95,6 +97,7 @@ public class Pokedex {
      * @return
      */
     public Collection<Pokemon> getAllPokemons() {
+        // Devuelve todos los pokemones leídos del archivo
         return pokemonMap.values();
     }
 }

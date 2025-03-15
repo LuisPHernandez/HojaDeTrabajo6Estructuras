@@ -31,9 +31,11 @@ public class Main {
                 System.out.println("Opción inválida, se usará HashMap por defecto.");
         }
 
+        // Se crea la pokedex con la implementation seleccionada
         Pokedex pokedex = new Pokedex(mapType);
         ColeccionUsuario coleccion = new ColeccionUsuario();
 
+        // Se intentan cargar los datos del CSV
         try {
             pokedex.cargarDatos("pokemon_data_pokeapi.csv");
         } catch (IOException e) {
@@ -44,6 +46,7 @@ public class Main {
 
         boolean seguir = true;
 
+        // Loop principal
         while (seguir) {
             System.out.println("\nMenú de opciones:");
             System.out.println("1) Agregar un Pokémon a la colección");
@@ -56,6 +59,7 @@ public class Main {
             int opcion = scanner.nextInt();
             scanner.nextLine(); 
             
+            // Switch para ejecutar código según elección del usuario
             switch (opcion) {
                 case 1:
                     System.out.print("Ingrese el nombre del Pokémon a agregar (primera letra en mayúscula): ");
